@@ -3,17 +3,23 @@ import Classes from "./BuildControls.css";
 import BuildControl from "./BuildControl/BuildControl";
 
 const controls = [
-  { label: "Salad", key: "salad" },
-  { label: "Cheese", key: "cheese" },
-  { label: "Bacon", key: "bacon" },
-  { label: "Meat", key: "meat" },
+  { label: "Salad", type: "salad" },
+  { label: "Cheese", type: "cheese" },
+  { label: "Bacon", type: "bacon" },
+  { label: "Meat", type: "meat" },
 ];
 
 const BuildControls = (props) => {
   return (
     <div className={Classes.BuildControls}>
       {controls.map((ctrl) => {
-        return <BuildControl key={ctrl.label} label={ctrl.label} />;
+        return (
+          <BuildControl
+            key={ctrl.label}
+            label={ctrl.label}
+            added={() => props.ingredientsAdded(ctrl.type)}
+          />
+        );
       })}
     </div>
   );
